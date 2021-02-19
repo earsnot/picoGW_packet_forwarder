@@ -77,14 +77,14 @@ chips) that must be matched with the proper version of the HAL.
 4. Usage
 ---------
 
-* Pick the global_conf.json file from cfg/ directory that fit with your
+* Pick the data/global_conf.json file from cfg/ directory that fit with your
 platform, region and feature need.
 * Update the JSON configuration (global and local) files, as explained below.
 * For IoT Starter Kit only, run:
     ./reset_lgw.sh stop
     ./reset_lgw.sh start
 * Run:
-    ./update_gwid.sh local_conf.json    (OPTIONAL)
+    ./update_gwid.sh data/local_conf.json    (OPTIONAL)
     ./lora_pkt_fwd
 
 To stop the application, press Ctrl+C.
@@ -94,9 +94,9 @@ run forever.
 There are no command line launch options.
 
 The way the program takes configuration files into account is the following:
- * if there is a debug_conf.json parse it, others are ignored
- * if there is a global_conf.json parse it, look for the next file
- * if there is a local_conf.json parse it
+ * if there is a data/debug_conf.json parse it, others are ignored
+ * if there is a data/global_conf.json parse it, look for the next file
+ * if there is a data/local_conf.json parse it
 If some parameters are defined in both global and local configuration files, 
 the local definition overwrites the global definition. 
 
@@ -106,7 +106,7 @@ channels) and preferably default "safe" values for parameters that are
 specific for each gateway (eg. specify a default MAC address).
 
 As some of the parameters (like 'rssi_offset', 'tx_lut_*') are board dependant,
-several flavours of the global_conf.json file are provided in the cfg/
+several flavours of the data/global_conf.json file are provided in the cfg/
 directory.
 * global_conf.json.PCB_E286.EU868.*: to be used for Semtech reference design
   board with PCB name PCB_E286 (also called Gateway Board v1.0 (no FPGA)).
