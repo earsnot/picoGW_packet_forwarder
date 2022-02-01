@@ -92,12 +92,13 @@ void thread_timersync(void) {
     struct timeval offset_drift = {0, 0}; /* delta between current and previous offset */
 
     while (!exit_sig && !quit_sig) {
-        /* Get current unix time */
-        gettimeofday(&unix_timeval, NULL);
 
         /* Get current concentrator counter value (1MHz) */
         lgw_get_trigcnt(&sx1301_timecount);
 
+        /* Get current unix time */
+        gettimeofday(&unix_timeval, NULL);
+        
         concentrator_timeval.tv_sec = sx1301_timecount / 1000000UL;
         concentrator_timeval.tv_usec = sx1301_timecount - (concentrator_timeval.tv_sec * 1000000UL);
 
